@@ -1,5 +1,6 @@
 ﻿using MongoCSharp_BookStore.data;
 using MongoCSharp_BookStore.data.Impl;
+using MongoCSharp_BookStore.model;
 using MongoCSharp_BookStore.repository;
 using MongoCSharp_BookStore.repository.Impl;
 using MongoCSharp_BookStore.service;
@@ -13,16 +14,16 @@ IBookStoreService bookservice = new BookStoreService(repo);
 await bookservice.SeedIfEmptyAsync();
 
 // Demo queries
-var all = await bookservice.GetAllAsync();
+List<BookStore> all = await bookservice.GetAllAsync();
 Console.WriteLine($"Total docs: {all.Count}");
 
-var cheapest = await bookservice.GetCheapestAsync();
+BookStore? cheapest = await bookservice.GetCheapestAsync();
 Console.WriteLine($"Cheapest: {cheapest?.BookTitle} ({cheapest?.Price})");
 
-var bigBooks = await bookservice.GetByMinPagesAsync(200);
+List<BookStore> bigBooks = await bookservice.GetByMinPagesAsync(200);
 Console.WriteLine($">200 pages: {bigBooks.Count}");
 
-var byIsbn = await bookservice.GetByIsbnAsync("6779799933389898yu");
+BookStore? byIsbn = await bookservice.GetByIsbnAsync("6779799933389898yu");
 Console.WriteLine($"Find by ISBN 6779799933389898yu: {byIsbn?.BookTitle}");
 
 Console.WriteLine("Done.");

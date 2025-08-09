@@ -35,13 +35,13 @@ namespace MongoCSharp_BookStore.repository.Impl
 
         public async Task<bool> DeleteByIdAsync(string id)
         {
-            var result = await _collection.DeleteOneAsync(x => x.Id == id);
+            DeleteResult? result = await _collection.DeleteOneAsync(x => x.Id == id);
             return result.DeletedCount > 0;
         }
 
         public async Task<long> DeleteManyAsync(Expression<Func<BookStore, bool>> predicate)
         {
-            var result = await _collection.DeleteManyAsync(predicate);
+            DeleteResult? result = await _collection.DeleteManyAsync(predicate);
             return result.DeletedCount;
         }
 

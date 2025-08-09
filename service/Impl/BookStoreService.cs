@@ -1,21 +1,13 @@
 using MongoCSharp_BookStore.model;
 using MongoCSharp_BookStore.repository;
-using MongoCSharp_BookStore.service;
 
 namespace MongoCSharp_BookStore.service.Impl
 {
-    public class BookStoreService : IBookStoreService
+    public class BookStoreService(IBookStoreRepository repo) : IBookStoreService
     {
-        private readonly IBookStoreRepository _repo;
-
-        public BookStoreService(IBookStoreRepository repo)
-        {
-            _repo = repo;
-        }
-
         public async Task SeedIfEmptyAsync()
         {
-            var all = await _repo.GetAllAsync();
+            List<BookStore> all = await repo.GetAllAsync();
             if (all.Count > 0) return;
 
             var seed = new List<BookStore>
@@ -26,21 +18,21 @@ namespace MongoCSharp_BookStore.service.Impl
                 new() { ISBN = "6779799933389898yu", BookTitle = "Entity Framework Basics", Author = "Somya", Category = "ORM tool", TotalPages = 175, Price = 289 },
             };
 
-            await _repo.InsertManyAsync(seed);
+            await repo.InsertManyAsync(seed);
             Console.WriteLine("[BookStoreService] Seeded initial data.");
         }
 
-        public Task<List<BookStore>> GetAllAsync() => _repo.GetAllAsync();
+        public Task<List<BookStore>> GetAllAsync() => repo.GetAllAsync();
 
-        public Task<BookStore?> GetCheapestAsync() => _repo.GetCheapestAsync();
+        public Task<BookStore?> GetCheapestAsync() => repo.GetCheapestAsync();
 
-        public Task<List<BookStore>> GetByMinPagesAsync(int minPages) => _repo.GetByMinPagesAsync(minPages);
+        public Task<List<BookStore>> GetByMinPagesAsync(int minPages) => repo.GetByMinPagesAsync(minPages);
 
-        public Task<BookStore?> GetByIsbnAsync(string isbn) => _repo.GetByIsbnAsync(isbn);
+        public Task<BookStore?> GetByIsbnAsync(string isbn) => repo.GetByIsbnAsync(isbn);
 
-        public Task AddAsync(BookStore book) => _repo.InsertAsync(book);
+        public Task AddAsync(BookStore book) => repo.InsertAsync(book);
 
         public async Task<long> WipeAllAsync() =>
-            await _repo.DeleteManyAsync(_ => true);
+            await repo.DeleteManyAsync(_ => true);
     }
 }

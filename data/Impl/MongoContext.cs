@@ -19,13 +19,15 @@ namespace MongoCSharp_BookStore.data.Impl
         {
             var filter = new BsonDocument("name", name);
             var options = new ListCollectionsOptions { Filter = filter };
-            var exists = _database.ListCollections(options).Any();
+            bool exists = _database.ListCollections(options).Any();
 
-            if (!exists)
+            if (exists)
             {
-                _database.CreateCollection(name);
-                Console.WriteLine($"[MongoContext] Created collection '{name}'.");
+                return;
             }
+
+            _database.CreateCollection(name);
+            Console.WriteLine($"[MongoContext] Created collection '{name}'.");
         }
 
         public IMongoCollection<T> GetCollection<T>(string name) =>
