@@ -1,6 +1,6 @@
-using MongoCSharp_BookStore.model;
+using MongoCSharp_BookStore.Models;
 
-namespace MongoCSharp_BookStore.repository
+namespace MongoCSharp_BookStore.Data.Repositories
 {
     public interface IBookStoreRepository : IRepository<BookStore>
     {

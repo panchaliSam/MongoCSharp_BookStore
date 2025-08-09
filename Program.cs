@@ -1,10 +1,8 @@
 ﻿using MongoCSharp_BookStore.data;
-using MongoCSharp_BookStore.data.Impl;
-using MongoCSharp_BookStore.model;
-using MongoCSharp_BookStore.repository;
-using MongoCSharp_BookStore.repository.Impl;
-using MongoCSharp_BookStore.service;
-using MongoCSharp_BookStore.service.Impl;
+using MongoCSharp_BookStore.Data;
+using MongoCSharp_BookStore.Data.Repositories;
+using MongoCSharp_BookStore.Models;
+using MongoCSharp_BookStore.Services;
 
 IMongoContext context = new MongoContext();
 IBookStoreRepository repo = new BookStoreRepository(context);

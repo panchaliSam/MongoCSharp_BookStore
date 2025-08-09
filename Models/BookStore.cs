@@ -1,7 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace MongoCSharp_BookStore.model
+namespace MongoCSharp_BookStore.Models
 {
     [BsonIgnoreExtraElements]
     public class BookStore

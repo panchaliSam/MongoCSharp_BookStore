@@ -1,7 +1,7 @@
-using MongoCSharp_BookStore.model;
-using MongoCSharp_BookStore.repository;
+using MongoCSharp_BookStore.Data.Repositories;
+using MongoCSharp_BookStore.Models;
 
-namespace MongoCSharp_BookStore.service.Impl
+namespace MongoCSharp_BookStore.Services
 {
     public class BookStoreService(IBookStoreRepository repo) : IBookStoreService
     {

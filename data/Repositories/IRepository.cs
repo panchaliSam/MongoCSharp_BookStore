@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 
-namespace MongoCSharp_BookStore.repository
+namespace MongoCSharp_BookStore.Data.Repositories
 {
     public interface IRepository<T>
     {

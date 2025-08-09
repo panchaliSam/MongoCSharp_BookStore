@@ -1,4 +1,4 @@
-namespace MongoCSharp_BookStore.config
+namespace MongoCSharp_BookStore.Configuration
 {
     public static class DbConfig
     {

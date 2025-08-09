@@ -1,9 +1,9 @@
-using System.ComponentModel;
+using MongoCSharp_BookStore.Configuration;
+using MongoCSharp_BookStore.data;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using MongoCSharp_BookStore.config;
 
-namespace MongoCSharp_BookStore.data.Impl
+namespace MongoCSharp_BookStore.Data
 {
     public class MongoContext : IMongoContext
     {

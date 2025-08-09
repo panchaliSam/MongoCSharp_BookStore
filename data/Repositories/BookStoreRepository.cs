@@ -1,11 +1,10 @@
 using System.Linq.Expressions;
-using MongoDB.Driver;
-using MongoCSharp_BookStore.config;
+using MongoCSharp_BookStore.Configuration;
 using MongoCSharp_BookStore.data;
-using MongoCSharp_BookStore.model;
-using MongoCSharp_BookStore.repository;
+using MongoCSharp_BookStore.Models;
+using MongoDB.Driver;
 
-namespace MongoCSharp_BookStore.repository.Impl
+namespace MongoCSharp_BookStore.Data.Repositories
 {
     public class BookStoreRepository : IBookStoreRepository
     {

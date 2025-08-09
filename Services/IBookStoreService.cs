@@ -1,6 +1,6 @@
-using MongoCSharp_BookStore.model;
+using MongoCSharp_BookStore.Models;
 
-namespace MongoCSharp_BookStore.service
+namespace MongoCSharp_BookStore.Services
 {
     public interface IBookStoreService
     {
