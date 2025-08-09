@@ -11,5 +11,11 @@
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="3.4.2" />
   </ItemGroup>
+    <ItemGroup>
+      <Compile Include="Configuration/**/*.cs" />
+      <Compile Include="Data/**/*.cs" />
+      <Compile Include="Models/**/*.cs" />
+      <Compile Include="Services/**/*.cs" />
+    </ItemGroup>
 
 </Project>
